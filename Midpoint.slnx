@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Midpoint.vcxproj" Id="99518f7c-8755-4a87-ab87-79f8ffc7a807" />
+</Solution>
