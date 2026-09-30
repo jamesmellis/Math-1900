@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Flash Cards.vcxproj" Id="03976fb6-79f2-4aa2-ac08-683ec3ae7748" />
+</Solution>
