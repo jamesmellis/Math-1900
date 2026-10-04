@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Voltage Safe.vcxproj" Id="aa387e01-8e8e-479f-91cd-64a38804e342" />
+</Solution>
