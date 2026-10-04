@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Resistor within Tolerance.vcxproj" Id="b267290e-b7d2-497b-9baf-a1dc424259a9" />
+</Solution>
