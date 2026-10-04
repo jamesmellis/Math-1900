@@ -2,30 +2,30 @@
 // Math 1900
 // Homework 5
 
-#include <iostream>
+#include<iostream>
 #include<cmath>
-
 using namespace std;
-
 int main() {
-	double resistor_rating;
-	double measured_resistance;
 
-	cout << "Please enter the rated resistance of the resistor: " << endl;
-	cin >> resistor_rating;
-	cout << "Please enter the measured resistance of the resistor: " << endl;
-	cin >> measured_resistance;
-	
-	if (measured_resistance >= ((resistor_rating)-(.05 * resistor_rating)) && measured_resistance <=((.05 * resistor_rating) + (resistor_rating))) {
-			cout << "The measured resistance is within the tolerance range." << endl;
+	cout << "Please enter a number grade to convert to a letter grade: ";
+	int grade;
+	cin >> grade;
+	if (grade >= 90 && grade <= 100) {
+		cout << "You received a: A" << endl;
 	}
-	else if (measured_resistance > ((.05 * resistor_rating) + (resistor_rating))) {
-		cout << "The measured resistance is too high and outside the tolerance range." << endl;
+	else if (grade >= 80 && grade <= 89) {
+		cout << "You received a: B" << endl;
 	}
-	else if (measured_resistance < ((resistor_rating)-(.05 * resistor_rating))) {
-		cout << "The measured resistance is too low and outside the tolerance range." << endl;
+	else if (grade >= 70 && grade <= 79) {
+		cout << "You received a: C" << endl;
 	}
-
+	else if (grade >= 60 && grade <= 69) {
+		cout << "You received a: D" << endl;
+	}
+	else if (grade < 60) {
+		cout << "You received a: F" << endl;
+	}
+	cout << "With a grade of: " << grade << endl;
 
 
 	return 0;
