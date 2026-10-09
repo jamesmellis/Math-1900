@@ -1,0 +1,2 @@
+Password entered: ellis
+Number of attempts: 2

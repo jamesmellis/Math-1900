@@ -3,35 +3,36 @@
 // Homework 6
 
 #include <iostream>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
 int main() {
-	int secretNumber;
-	
-cout << "Player one, enter a secret number between 1 and 10: ";
-cin >> secretNumber;
-	
-int guess;
-cout << "Player two, guess the secret number: ";
-int attempts = 1;
-cin >> guess;
- 
-while (guess > 10 || guess < 1) {
-	cout << "Sorry enter a number between 1 and 10: ";
-	cin >> guess;
-	attempts++;
-}
-while (guess != secretNumber) {
-	cout << "Sorry, that is not the secret number. Try again: ";
-	cin >> guess;
-	attempts++;
+	string password;
+	cout << "Please enter a 5-character password: " << endl;
+	cin >> password;
+	int attempts = 0;
 
-		if (guess == secretNumber) {
-			cout << "Congratulations! You guessed the secret number!" << endl;
-			cout << "It took you " << attempts << " attempts to guess the secret number." << endl;
-		}
+	string guess;
+	cout << "You have 3 attempts to enter the correct password." << endl;
+	cin >> guess;
+	attempts++;
+	
+	while (guess != password && attempts < 3) {
+		cout << "Incorrect password, try again." << endl;
+		cin >> guess;
+		attempts++;
 	}
 
+	if (guess == password) {
+		cout << "Password correct :) " << endl;
+	} else {
+		cout << "You have exceeded the maximum number of attempts, your account has been locked." << endl;
+	}
+	ofstream fout("data.txt");
+	fout << "Password entered: " << password << endl;
+	fout << "Number of attempts: " << attempts << endl;
+	fout.close();
 	return 0;
 }
