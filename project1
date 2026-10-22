@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <cmath>
+#include <fstream>
+
+using namespace std;
+int main() {
+	int x, y;
+	double miles, time, average_speed;
+	cout << "Enter how many checkpoints would you like to make: ";
+	cin >> x;
+	y = 1;
+	if (x < 1) {
+		cout << "Invalid input, You must enter a number greater than 1." << endl;
+	}
+	cout << "You have chosen to make " << x << " checkpoints." << endl;
+	ofstream fout("data.txt");
+
+	while (y <= x) {
+		cout << "Please enter the miles traveled for checkpoint" << y <<"  " << " and how much time in hours : " << endl;
+		cin >> miles >> time;
+		average_speed = miles / time;
+		ofstream fin ("data.txt");
+		fin.open("data.txt");
+		fin << "Checkpoint " << y << ": Miles = " << miles << ", Time = " << time << ", Average Speed = " << average_speed << endl;
+		y += 1;
+	
+	}
+	ifstream fin("data.txt");
+	cout << "The data from the trip" << endl;
+	fin.open("data.txt");
+	fout.close();
+	cout << "The total trip was a total: " << miles << "miles with an average speed of " << average_speed << endl;
+
+
+	return 0;
+}
