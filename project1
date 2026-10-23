@@ -3,40 +3,48 @@
 #include <string>
 #include <cmath>
 #include <fstream>
+#include <iomanip>
 
 using namespace std;
 int main() {
 	int x, y;
-	double miles, time, average_speed, total_time; // added to setup for error message
+	double miles, time, average_speed,total_time,total_miles;
 	cout << "Enter how many checkpoints would you like to make: ";
 	cin >> x;
 	y = 1;
-	if (x < 1) {
-		cout << "Invalid input, You must enter a number greater than 1." << endl;
+	while (x < 2) {
+		cout << "Invalid input, You must enter a number greater than 1 please try again: " << endl;
+		cin >> x;
 	}
-	cout << "You have chosen to make " << x << " checkpoints." << endl;
-	ofstream fout("data.txt");
-if (time < total_time) {
-	cout << "Invalid input" << endl; // error message added for a incorrect input
-	while (y <= x) {
-		cout << "Please enter the miles traveled for checkpoint" << y <<"  " << " and how much time in hours : " << endl;
-		cin >> miles >> time;
-		total_time += time; // added to keep track of total time
-		average_speed = miles / time;
-		ofstream fin ("data.txt");
+	if (x > 1) {
+		cout << "You have chosen to make " << x << " checkpoints." << endl;
+		ofstream fout("data.txt");
+		time = 0;
+		total_time = 0; // initialize total_time to 0
+		while (y <= x) {
+			cout << "Please enter the miles traveled for checkpoint " << y << " and how much time into the trip in hours : " << endl;
+			cin >> miles >> time;
+			while (time < total_time) {
+				cout << "Invalid input please try again the time must be greater than the previous time: " << endl;
+				cin >> time;
+			}
+			total_time += time; // added to keep track of total time
+			average_speed = miles / time;
+			ofstream fin("data.txt");
+			fin.open("data.txt");
+			cout << fixed << setprecision(1);
+			fin << "Checkpoint " << y << ": Miles = " << miles << ", Time in hours = " << time << ", Average Speed = " << average_speed << endl;
+			cout << "Checkpoint " << y << ": Miles = " << miles << ", Time in hours = " << time << ", Average Speed = " << average_speed << endl;
+			y += 1;
+
+		}
+		ifstream fin("data.txt");
+		cout << "The data from the trip" << endl;
 		fin.open("data.txt");
-		fin << "Checkpoint " << y << ": Miles = " << miles << ", Time = " << time << ", Average Speed = " << average_speed << endl;
-		cout << "Checkpoint " << y << ": Miles = " << miles << ", Time in hours = " << time << ", Average Speed = " << average_speed << endl; // added to show miles and time at each point
-
-		y += 1;
-	
+		fout.close();
+		cout << fixed << setprecision(1);
+		cout << "The total trip was a total: " << miles << " miles with an average speed of " << average_speed << " MPH" << endl;
 	}
-	ifstream fin("data.txt");
-	cout << "The data from the trip" << endl;
-	fin.open("data.txt");
-	fout.close();
-	cout << "The total trip was a total: " << miles << "miles with an average speed of " << average_speed << endl;
-
-
+	
 	return 0;
 }
