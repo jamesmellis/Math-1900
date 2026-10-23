@@ -20,6 +20,7 @@ int main() {
 	while (y <= x) {
 		cout << "Please enter the miles traveled for checkpoint" << y <<"  " << " and how much time in hours : " << endl;
 		cin >> miles >> time;
+		total_time += time; // added to keep track of total time
 		average_speed = miles / time;
 		ofstream fin ("data.txt");
 		fin.open("data.txt");
