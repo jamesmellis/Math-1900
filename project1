@@ -16,7 +16,8 @@ int main() {
 	}
 	cout << "You have chosen to make " << x << " checkpoints." << endl;
 	ofstream fout("data.txt");
-
+if (time < total_time) {
+	cout << "Invalid input" << endl; // error message added for a incorrect input
 	while (y <= x) {
 		cout << "Please enter the miles traveled for checkpoint" << y <<"  " << " and how much time in hours : " << endl;
 		cin >> miles >> time;
