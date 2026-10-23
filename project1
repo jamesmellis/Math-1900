@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+int main() {
+	int x, y;
+	y = 1;
+	double miles, time, average_speed, total_time, previous_time, speed;
+	total_time = 0;
+	speed = 0;
+	miles = 0;
+	total_time = 0;
+	average_speed = 0;
+	previous_time = 0;
+	cout << "Enter how many checkpoints would you like to make: ";
+	cin >> x;
+	while (x < 2) {
+		cout << "Invalid input, You must enter a number greater than 1 please try again: " << endl;
+		cin >> x;
+	}
+	cout << "You have chosen to make " << x << " checkpoints." << endl;
+		while (y <= x) {
+			cout << "Please enter the miles traveled for checkpoint " << y << " and how much time into the trip in hours : " << endl;
+			cin >> miles >> time;
+			while (time <= previous_time) {
+				cout << "Invalid input please try again the time must be greater than the previous time: " << endl;
+				cin >> time;
+			}
+			total_time += time; // add the time for this checkpoint to the total time
+			speed = (miles / time); // calculate total average speed
+			cout << fixed << setprecision(1);
+			cout << "Checkpoint " << y << ":total miles traveled so far = " << miles << endl;
+			cout << ", Time in hours = " << time << endl;
+			cout << ", Average Speed = " << speed << " MPH" << endl;
+			previous_time = time; // update the previous time
+			average_speed += speed; // add the speed for this checkpoint to the average speed
+			y += 1;
+		}
+		average_speed = average_speed / x; // calculate the overall average speed
+		cout << "The data from the trip" << endl;
+		cout << fixed << setprecision(1);
+		cout << "The total trip was a total: " << miles << " miles with an average speed of " << average_speed << " MPH" << endl;
+	
+	return 0;
+}
