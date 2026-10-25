@@ -1,3 +1,7 @@
+// James Ellis
+// 1900 Math
+// Project 1
+
 #include <iostream>
 #include <cmath>
 #include <iomanip>
@@ -15,12 +19,12 @@ int main() {
 	previous_time = 0;
 	cout << "Enter how many checkpoints would you like to make: ";
 	cin >> x;
-	while (x < 2) {
+	while (x < 2) { // to ensure that the user enters 2 or more checkpoints
 		cout << "Invalid input, You must enter a number greater than 1 please try again: " << endl;
 		cin >> x;
 	}
 	cout << "You have chosen to make " << x << " checkpoints." << endl;
-		while (y <= x) {
+	while (y <= x) { // loop to get the miles and time for each checkpoint
 			cout << "Please enter the miles traveled for checkpoint " << y << " and how much time into the trip in hours : " << endl;
 			cin >> miles >> time;
 			while (time <= previous_time) {
@@ -29,7 +33,7 @@ int main() {
 			}
 			total_time += time; // add the time for this checkpoint to the total time
 			speed = (miles / time); // calculate total average speed
-			cout << fixed << setprecision(1);
+			cout << fixed << setprecision(1); // set the output to 1 decimal place
 			cout << "Checkpoint " << y << ":total miles traveled so far = " << miles << endl;
 			cout << ", Time in hours = " << time << endl;
 			cout << ", Average Speed = " << speed << " MPH" << endl;
@@ -39,7 +43,7 @@ int main() {
 		}
 		average_speed = average_speed / x; // calculate the overall average speed
 		cout << "The data from the trip" << endl;
-		cout << fixed << setprecision(1);
+		cout << fixed << setprecision(1); // set the output to 1 decimal place
 		cout << "The total trip was a total: " << miles << " miles with an average speed of " << average_speed << " MPH" << endl;
 	
 	return 0;
