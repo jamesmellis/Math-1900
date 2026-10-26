@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="multiplication question generator.vcxproj" Id="5a24f9c6-0f39-4377-b6a9-d3d1aa91ff4a" />
+</Solution>
