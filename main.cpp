@@ -1,25 +1,23 @@
 // James Ellis
-// Math 1900 
-// Homework 8 problem 1
+// Math 1900
+// Homework 8 problem 2
 
 #include <iostream>
+using namespace std;
 
-using namespace std;	
-
-double produce(double a, double b); // Function prototype
-int i = 0; // Global variable declaration
-double a, b, result; // Variable declaration
-
+const double PI = 3.14159; // stating my constant
+double radius,height,volume; // stating my doubles
+double cylinderVolume(double radius, double height) { // this is my function that will return the volume
+	volume = PI * radius * radius * height; // this is the formula for volume of a cylinder
+	return volume;
+}
 int main() {
-	while (i < 5) { // Loop to get input and calculate product 5 times
-		cout << "Enter two numbers: ";
-		cin >> a >> b;
-		result = produce(a, b); // Function call
-		cout << "The product of is: " << result << endl;
-		i++; // Increment the counter
-	}
+	cout << "Enter the radius of the cylinder: ";
+	cin >> radius; // take in the radius of the cylinder
+	cout << "Enter the height of the cylinder: ";
+	cin >> height; // take in the height of the cylinder
+	volume = cylinderVolume(radius, height); // plugs in the known radius and height into the function returning the volume and setting that figure to = the double volume
+	cout << "The volume of the cylinder is: " << volume << endl; 
+
 	return 0;
 }
-	double produce(double a, double b)
-	{ return a * b;  // Function definition
-	}
