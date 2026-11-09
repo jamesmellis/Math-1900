@@ -1,53 +1,25 @@
 // James Ellis
+// Homework 9 problem 1
 // Math 1900
-// Homework 7
 
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <fstream>
-
 using namespace std;
+
+const int SIZE = 5; // 1st Define the size of the array
+int numbers[SIZE] = { 0, 10, 2, 4, 10 }; // 2nd set the array with 5 elements
+
 int main() {
-	int z, a, b, c;
-	z = 0; // counter for number of questions asked
-	c = 0; // counter for number of correct answers
-	char response;
-	response = 'y'; // initialize response to 'y' to start the quiz
-
-	ofstream fout("Practice.txt"); // open the file in append mode
-	
-	while (response == 'y' || response == 'Y') {
-
-		while (z < 5) { // loop to ask 5 questions
-			srand(time(0)); // seed the random number generator
-			int x = rand() % 12 + 1; // generate a random integer between 1 and 12
-			int y = rand() % 12 + 1; // generate a random integer between 1 and 12
-			cout << x << "x" << y << " = ";
-			cin >> a;
-			b = x * y; // calculate the product of x and y
-			if (b == a) { // check if the answer is correct
-				cout << "Correct!" << endl;
-				c++; // increment the correct answer counter
-			}
-			else { // if the answer is incorrect
-				cout << "Incorrect, please try again." << endl;
-				fout << x << "x" << y << " = " << a << "\n"; // record the incorrect answer in the file
-			}
-			z++; // increment the question counter
-		}
-		cout << "You got " << c << " correct out of 5" << endl;
-		cout << "Try again Y/N? ";
-		cin >> response;
-		if (response == 'y' || response == 'Y') {// Restart the quiz
-			z = 0; // reset the question counter
-			c = 0; // reset the correct answer counter
-		}
-		else {
-			cout << "Thank you for practicing, goodbye!" << endl;
-		}
+	for (int i = 0; i < SIZE; i++) { // 3rd setup 1st Loop through the array and print each element all on one line
+		cout << numbers[i] << " "; // did not use endl because it would print each number on a new line insead added a space and keep them on the same line
+    }
+	cout << endl; // added endl to move to the next line for the next output after the loop is done
+	for (int i = 0; i < SIZE; i++) { // 4th setup 2nd Loop through the array and print each element on its own line
+		cout << numbers[i] <<endl;
 	}
-	fout.close(); // close the file
+	for (int i = SIZE - 1; i > -1; i--) { // 5th setup 3rd Loop through the array in reverse order and print each element all on one line
+		cout << numbers[i] << " "; // added a space and keeping the numbers on the same line
+	}
+	cout << endl; // added endl to move to the next line for the next output after the loop is done
 
-	return 0;
+    return 0;
 }
