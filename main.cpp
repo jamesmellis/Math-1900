@@ -1,53 +1,45 @@
-// James Ellis
+//James Ellis
+// Homework 10 problem 1
 // Math 1900
-// Homework 7
 
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <fstream>
+#include <iomanip>
 
 using namespace std;
+
 int main() {
-	int z, a, b, c;
-	z = 0; // counter for number of questions asked
-	c = 0; // counter for number of correct answers
-	char response;
-	response = 'y'; // initialize response to 'y' to start the quiz
+	const int Rows = 3; // Number of rows
+	const int Cols = 4; // Number of columns
 
-	ofstream fout("Practice.txt"); // open the file in append mode
-	
-	while (response == 'y' || response == 'Y') {
-
-		while (z < 5) { // loop to ask 5 questions
-			srand(time(0)); // seed the random number generator
-			int x = rand() % 12 + 1; // generate a random integer between 1 and 12
-			int y = rand() % 12 + 1; // generate a random integer between 1 and 12
-			cout << x << "x" << y << " = ";
-			cin >> a;
-			b = x * y; // calculate the product of x and y
-			if (b == a) { // check if the answer is correct
-				cout << "Correct!" << endl;
-				c++; // increment the correct answer counter
-			}
-			else { // if the answer is incorrect
-				cout << "Incorrect, please try again." << endl;
-				fout << x << "x" << y << " = " << a << "\n"; // record the incorrect answer in the file
-			}
-			z++; // increment the question counter
+	int numbers[Rows][Cols] = { // Initialize the 2D array
+		{ 1, 2, 3, 4 }, // Row 1
+		{ 5, 6, 7, 8 }, // Row 2
+		{ 9, 10, 11, 12 } // Row 3
+	};
+	for (int row = 0; row < Rows; ++row) { // Loop through each row
+		for (int col = 0; col < Cols; ++col) { // Loop through each column
+			cout << setw(8) << numbers[row][col]; // Print the value with spacing of 8 characters
 		}
-		cout << "You got " << c << " correct out of 5" << endl;
-		cout << "Try again Y/N? ";
-		cin >> response;
-		if (response == 'y' || response == 'Y') {// Restart the quiz
-			z = 0; // reset the question counter
-			c = 0; // reset the correct answer counter
-		}
-		else {
-			cout << "Thank you for practicing, goodbye!" << endl;
-		}
+		cout << endl; // Move to the next line after each row
 	}
-	fout.close(); // close the file
+	cout << endl; // Print a blank line to make it look better
 
+	for (int row = 0; row < Rows; ++row) { // Loop through each row
+		int total = 0;// sets the total variable to 0
+		for (int col = 0; col < Cols; ++col) { // Loop through each column
+			total += numbers[row][col]; // Add the value to the total
+		}
+		cout << "Row " << row + 1 << ": " << total << endl; // Print the total for the row
+	}
+	cout << endl; // Print a blank line to make it look better
+
+	for (int col = 0; col < Cols; ++col) { // Loop through each column
+		int total = 0; // sets the total variable to 0
+		for (int row = 0; row < Rows; ++row) { // Loop through each row
+			total += numbers[row][col]; // Add the value to the total
+		}
+		cout << "Column " << col + 1 << ": " << total << endl; // Print the total for the column
+	}
+	cout << endl; // Print a blank line to make it look better
 	return 0;
 }
