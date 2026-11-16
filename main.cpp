@@ -1,53 +1,40 @@
 // James Ellis
 // Math 1900
-// Homework 7
+// Homework 10 problem 3
 
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <fstream>
-
 using namespace std;
+
 int main() {
-	int z, a, b, c;
-	z = 0; // counter for number of questions asked
-	c = 0; // counter for number of correct answers
-	char response;
-	response = 'y'; // initialize response to 'y' to start the quiz
-
-	ofstream fout("Practice.txt"); // open the file in append mode
-	
-	while (response == 'y' || response == 'Y') {
-
-		while (z < 5) { // loop to ask 5 questions
-			srand(time(0)); // seed the random number generator
-			int x = rand() % 12 + 1; // generate a random integer between 1 and 12
-			int y = rand() % 12 + 1; // generate a random integer between 1 and 12
-			cout << x << "x" << y << " = ";
-			cin >> a;
-			b = x * y; // calculate the product of x and y
-			if (b == a) { // check if the answer is correct
-				cout << "Correct!" << endl;
-				c++; // increment the correct answer counter
-			}
-			else { // if the answer is incorrect
-				cout << "Incorrect, please try again." << endl;
-				fout << x << "x" << y << " = " << a << "\n"; // record the incorrect answer in the file
-			}
-			z++; // increment the question counter
-		}
-		cout << "You got " << c << " correct out of 5" << endl;
-		cout << "Try again Y/N? ";
-		cin >> response;
-		if (response == 'y' || response == 'Y') {// Restart the quiz
-			z = 0; // reset the question counter
-			c = 0; // reset the correct answer counter
-		}
-		else {
-			cout << "Thank you for practicing, goodbye!" << endl;
+	const int size = 10; // size of the plot
+	char plot[size][size]; // 2D array to represent the plot
+	for (int i = 0; i < size; i++) { // loop for the plot i and increase it by 1 each time it loops
+		for (int j = 0; j < size; j++) { // loop for the plot j and increase it by 1 each time it loops
+			plot[i][j] = '.'; // set the plot with dots
 		}
 	}
-	fout.close(); // close the file
-
+	cout << "Original plot:" << endl;
+	for (int i = 0; i < size; i++) { // loop for the plot i and increase it by 1 each time it loops
+		for (int j = 0; j < size; j++) { // loop for the plot j and increase it by 1 each time it loops
+			cout << plot[i][j] << " ";
+		}
+		cout << endl; // print a new line after the plot
+	}
+	int x, y; // variables to hold the coordinates
+	cout << endl;
+	cout << "Enter x coordinate (0-9): "; // prompt the user to enter the x coordinate
+	cin >> x;
+	cout << "Enter y coordinate (0-9): "; // prompt the user to enter the y coordinate
+	cin >> y;
+	plot[y][x] = '*'; // set the plot at the coordinates to an asterisk
+	cout << endl;
+	cout << "Updated plot:" << endl;
+	for (int i = 0; i < size; i++) { // loop for the plot i and increase it by 1 each time it loops
+		for (int j = 0; j < size; j++) { // loop for the plot j and increase it by 1 each time it loops
+			cout << plot[i][j] << " ";
+		}
+		cout << endl; // print a new line after the plot
+	}
 	return 0;
+
 }
