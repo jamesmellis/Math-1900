@@ -1,45 +1,43 @@
-//James Ellis
-// Homework 10 problem 1
+// James Ellis
 // Math 1900
+// Homework 10 problem 2
 
 #include <iostream>
-#include <iomanip>
 
 using namespace std;
 
+const int students = 2; // Number of students
+const int quizzes = 3; // Number of quizzes
+double rowAverage(double scores[students][quizzes], int row); // Function for calculating the average score of a student
+
 int main() {
-	const int Rows = 3; // Number of rows
-	const int Cols = 4; // Number of columns
-
-	int numbers[Rows][Cols] = { // Initialize the 2D array
-		{ 1, 2, 3, 4 }, // Row 1
-		{ 5, 6, 7, 8 }, // Row 2
-		{ 9, 10, 11, 12 } // Row 3
-	};
-	for (int row = 0; row < Rows; ++row) { // Loop through each row
-		for (int col = 0; col < Cols; ++col) { // Loop through each column
-			cout << setw(8) << numbers[row][col]; // Print the value with spacing of 8 characters
+	double scores[students][quizzes]; // Declare a 2D array to store the scores of each student for each quiz
+	for (int i = 0; i < students; i++) { // Loop through each student
+		for (int j = 0; j < quizzes; j++) { // Loop through each quiz
+			cout << "Enter score for student " << i + 1 << ", quiz " << j + 1 << ": "; // Prompt to enter the score for the current student and quiz
+			cin >> scores[i][j]; // Store the score in the 2D array
 		}
-		cout << endl; // Move to the next line after each row
 	}
-	cout << endl; // Print a blank line to make it look better
-
-	for (int row = 0; row < Rows; ++row) { // Loop through each row
-		int total = 0;// sets the total variable to 0
-		for (int col = 0; col < Cols; ++col) { // Loop through each column
-			total += numbers[row][col]; // Add the value to the total
+	cout << endl; // Print a blank line to look better
+	for (int i = 0; i < students; i++) { // Loop through each student
+		cout << "Student " << i + 1 << " average: " << rowAverage(scores, i) << endl; // Call the rowAverage function to calculate and print the average score for the current student
+	}
+	cout << endl; // Print a blank line to look better
+	cout << "Quiz averages: " << endl; 
+	for (int j = 0; j < quizzes; j++) { // Loop through each quiz
+		double total = 0; // set a variable to store the total score for the current quiz
+		for (int i = 0; i < students; i++) { // Loop through each student
+			total += scores[i][j]; // Add the score of the current student for the current quiz to the total
 		}
-		cout << "Row " << row + 1 << ": " << total << endl; // Print the total for the row
+		cout << "Quiz " << j + 1 << " average: " << total / students << endl; // Calculate and print the average score for the current quiz
 	}
-	cout << endl; // Print a blank line to make it look better
-
-	for (int col = 0; col < Cols; ++col) { // Loop through each column
-		int total = 0; // sets the total variable to 0
-		for (int row = 0; row < Rows; ++row) { // Loop through each row
-			total += numbers[row][col]; // Add the value to the total
-		}
-		cout << "Column " << col + 1 << ": " << total << endl; // Print the total for the column
-	}
-	cout << endl; // Print a blank line to make it look better
 	return 0;
+}
+double rowAverage(double scores[students][quizzes], int row) // Function to calculate the average score of a student
+	{
+	double total = 0; // set a variable to store the total score for the current student
+	for (int j = 0; j < quizzes; j++) { // Loop through each quiz
+		total += scores[row][j]; // Add the score of the current student for the current quiz to the total
+	}
+	return total / quizzes; // Calculate and return the average score for the current student
 }
